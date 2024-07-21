@@ -86,8 +86,68 @@ void towerOfHanoi(int n, char src, char help, char dest)
     cout << "Move " << n << " from " << src << " to " << dest << endl;
     towerOfHanoi(n - 1, help, src, dest);
 }
+
+// to remove duplicates from a string
+string removeDuplicates(string str)
+{
+    if (str.length() == 0)
+    {
+        return "";
+    }
+    char checkChar = str[0];
+    string ans = removeDuplicates(str.substr(1));
+    if (checkChar == ans[0])
+    {
+        return ans;
+    }
+    return (checkChar + ans);
+}
+
+// move all x to the end
+string moveAllX(string str)
+{
+    if (str.length() == 0)
+    {
+        return "";
+    }
+    char checkChar = str[0];
+    string ans = moveAllX(str.substr(1));
+    if (checkChar == 'x')
+    {
+        return (ans + checkChar);
+    }
+    return (checkChar + ans);
+}
+
+// generate all substrings
+void generateSubStrings(string str, string ans)
+{
+    if (str.length() == 0)
+    {
+        cout << ans << endl;
+        return;
+    }
+    char ch = str[0];
+    generateSubStrings(str.substr(1), ans);
+    generateSubStrings(str.substr(1), ans + ch);
+}
+
+// substrings with ascii code
+void subStringsASCII(string str, string ans)
+{
+    if (str.length() == 0)
+    {
+        cout << ans << endl;
+        return;
+    }
+    char ch = str[0];
+    int ASCII = ch;
+    subStringsASCII(str.substr(1), ans);
+    subStringsASCII(str.substr(1), ans + ch);
+    subStringsASCII(str.substr(1), ans + to_string(ASCII));
+}
 int main()
 {
-    towerOfHanoi(3, 'a', 'b', 'c');
+    subStringsASCII("AB", "");
     return 0;
 }
