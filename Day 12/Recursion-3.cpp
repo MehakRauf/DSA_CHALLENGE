@@ -13,7 +13,7 @@ void reverse(string str, int size, int i)
     cout << str[i];
 }
 
-// my second approach
+// my second approach ( O(N) Challenge) 
 void reverseString(string str, int i)
 {
     if (i == str.size())
@@ -36,7 +36,7 @@ void reverseString1(string s)
     cout << s[0];
 }
 
-// my approach
+// my approach ( O(N) Challenge)
 void replacePi(string str, int i)
 {
     if (i == str.length())
